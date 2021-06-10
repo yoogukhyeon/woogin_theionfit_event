@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <!--style-->
+    <style>
+   		html {
+				font-size: 16px;
+			}
+			body {
+				font-family: "notoSansKR", sans-serif;
+			}
+			ul,
+			li {
+				list-style: none;
+			}
+			body,
+			p,
+			ul,
+			li,
+			form,
+			dl,
+			dd,
+			dt,
+			input {
+				margin: 0;
+				padding: 0;
+			}
+			h2 {
+				margin: 0;
+			}
+			fieldset {
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			legend {
+				display: none;
+			}
+			button {
+				border: none;
+				background: none;
+				padding: 0;
+				font-size: 0;
+				line-height: 0;
+				cursor: pointer;
+			}
+			table {
+				border-collapse: collapse;
+				table-layout: fixed;
+			}
+			td {
+				padding: 0;
+			}
+			a {
+				text-decoration: none;
+			}
+			img {
+				border: 0;
+				max-width: 100%;
+				height: auto;
+				vertical-align: top;
+			}
+			.floatleft {
+				float: left;
+			}
+			.floatright {
+				float: right;
+			}
+			.clearboth {
+				clear: both;
+			}
+			input {
+				background: none;
+				border: none;
+				cursor: pointer;
+			}
+			input::-webkit-input-placeholder {
+				color: #999;
+			}
+			.is_pc {
+				display: block;
+			}
+			.is_mobile {
+				display: none;
+			}
+			.event_wrap {
+				position: relative;
+				width: 100%;
+				max-width: 855px;
+				overflow: hidden;
+			}
+			/*event*/
+
+			.vote-wrap {
+				position: relative;
+			}
+			.vote-wrap button {
+				position: absolute;
+				left: 22%;
+				top: 0;
+				width: 55%;
+				height: 100%;
+			}
+			.vote-wrap button:disabled {
+				cursor: default;
+			}
+			.vote-wrap.active button {
+				cursor: pointer;
+			}
+			.vote-wrap.active .on {
+				display: block;
+			}
+			.vote-wrap.active .off,
+			.vote-wrap .on {
+				display: none;
+			}
+			.check-wrap {
+				position: relative;
+			}
+			.check-wrap > div {
+				position: absolute;
+				top: 0;
+				width: 45%;
+				text-align: center;
+			}
+			.check-wrap > div:nth-of-type(1) {
+				left:3%;
+			}
+            .check-wrap > div:nth-of-type(2) {
+				left:52%;
+			}
+			.check-wrap > div:nth-of-type(3) {
+				left:3%;
+                top:48%;
+			}
+            .check-wrap > div:nth-of-type(4) {
+				left:52%;
+                top:48%;
+			}
+			.check-wrap > div input {
+				opacity: 0;
+			}
+			.check-wrap > div input + label {
+				cursor: pointer;
+			}
+			.check-wrap > div label .on {
+				display: none;
+			}
+			.check-wrap > div input:checked + label .on {
+				display: inline-block;
+			}
+			.check-wrap > div input:checked + label .off {
+				display: none;
+			}
+			.check-wrap .check01 {
+				left: 5.9%;
+			}
+			.check-wrap img {
+				pointer-events: none;
+			}
+
+
+			.popup {
+				display: none;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: rgba(0, 0, 0, 0.5);
+				width: 100%;
+				height: 100%;
+				z-index: 20;
+			}
+			.popup > div {
+				display: none;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				/* top: 49.8%;
+				width: 69.3%; */
+			}
+			.win{
+				top: 43.9%;
+   				width: 81.1%;
+			}
+			.fail{
+				top: 44%;
+    			width: 81.06%;
+			}
+			.popup > div .inner {
+				position: relative;
+			}
+			.popup > div .inner a {
+				display: block;
+				position: absolute;
+				bottom: 0;
+				right: 45%;
+				width: 11%;
+				height: 9%;
+				z-index: 20;
+				text-indent: -99999px;
+				overflow: hidden;
+			}
+			.popup.fail {
+				display: block;
+			}
+			.popup.fail .fail {
+				display: block;
+				width: 60.71%;
+				top:50.2%;
+			}
+			.popup.win2 {
+				display: block;
+			}
+			.popup.win2 .win2 {
+				display: block;
+			}
+			.popup.win {
+				display: block;
+			}
+			.popup.win .win {
+				display: block;
+			}
+			.popup.more {
+				display: block;
+			}
+			.popup.more .more {
+				display: block;
+				width: 54.28%;
+				top: 50.2%;
+			}
+			.sns {
+				position: relative;
+			}
+			.sns a {
+				position: absolute;
+				top: 0%;
+				display: block;
+				width: 13%;
+				height: 91%;
+			}
+			.sns a.sns1 {
+				left: 14%;
+			}
+			.sns a.sns2 {
+				left: 33.5%;
+			}
+			.sns a.sns3 {
+				left: 53%;
+			}
+			.sns a.sns4 {
+				left: 72%;
+			}
+			.table {
+				height: auto;
+    			padding: 0 5.9% 0 5.9%;
+				/* background: url(images/410/bg_table.png) #f8f2d8 top no-repeat; */
+				background:#edf3f8;
+			}
+			.table .input_area {
+				position: relative;
+				margin-bottom: 30px;
+			}
+			.table .input_area label {
+				display: block;
+				border-bottom: 1px solid #c5c5c5;
+				margin-right: 202px;
+				padding: 0 10px;
+				background: #fff;
+				border: 1px solid #c5c5c5;
+				border-radius: 5px;
+				background-size: cover;
+			}
+			.table .input_area input[type="text"] {
+				width: 100%;
+				padding: 13px 0;
+				border: 0;
+				font-size: 18px;
+				font-family: "Nanum Gothic", "Malgun Gothic", dotum, "돋움";
+				color: #666;
+				font-weight: bold;
+			}
+			.table .input_area .submit {
+				position: absolute;
+				top: -1px;
+				right: 0;
+				outline: none;
+			}
+			.table table {
+				width: 100%;
+			}
+			.table caption {
+				visibility: hidden;
+				width: 1px;
+				height: 1px;
+				margin: 0;
+				padding: 0;
+				background: none;
+				font-size: 0;
+				line-height: 0;
+				text-indent: -9999em;
+			}
+			.table table th {
+				padding: 4px 0;
+				background: #383838;
+				border: 1px solid #ccc;
+				border-bottom: none;
+				color: #fff;
+			}
+			.table table td {
+				padding: 10px;
+				text-align: center;
+				border: 1px solid #cccccc;
+				color: #666;
+				font-size: 14px;
+				word-break: break-all;
+				background-color: #fff;
+			}
+			.table table tr:nth-child(2n) td {
+				background-color: #f1f0f0;
+			}
+			.table table td.txt {
+				text-align: left;
+			}
+			.table table .col1 {
+				width: 6.5497%;
+			}
+			.table table .col2 {
+				width: 54.7368%;
+			}
+			.table table .col3 {
+				width: 14.035%;
+			}
+			.table table .col4 {
+				width: 13.0994%;
+			}
+			
+
+			.table2 {
+				padding: 3.75% 5.9% 3.7% 5.9%;
+				background:#fff;
+				/* background: url(images/410/bg_table02.png) #f3edd4 top no-repeat ; */
+			}
+			.table2 .input_area {
+				position: relative;
+				margin-bottom: 30px;
+			}
+			.table2 .input_area label {
+				display: block;
+				border-bottom: 1px solid #c5c5c5;
+				margin-right: 202px;
+				padding: 0 10px;
+				background: #fff;
+				border: 1px solid #c5c5c5;
+				border-radius: 5px;
+				background-size: cover;
+			}
+			.table2 .input_area input[type="text"] {
+				width: 100%;
+				padding: 13px 0;
+				border: 0;
+				font-size: 18px;
+				font-family: "Nanum Gothic", "Malgun Gothic", dotum, "돋움";
+				color: #666;
+				font-weight: bold;
+			}
+			.table2 .input_area .submit2 {
+				position: absolute;
+				top: -1px;
+				right: 0;
+				outline: none;
+			}
+			.table2 table {
+				width: 100%;
+			}
+			.table2 caption {
+				visibility: hidden;
+				width: 1px;
+				height: 1px;
+				margin: 0;
+				padding: 0;
+				background: none;
+				font-size: 0;
+				line-height: 0;
+				text-indent: -9999em;
+			}
+			.table2 table th {
+				padding: 4px 0;
+				background: #a3c9cd;
+				border: 1px solid #ccc;
+				border-bottom: none;
+				color: #fff;
+			}
+			.table2 table td {
+				padding: 10px;
+				text-align: center;
+				border: 1px solid #cccccc;
+				color: #666;
+				font-size: 14px;
+				word-break: break-all;
+				background-color: #fff;
+			}
+			.table2 table tr:nth-child(2n) td {
+				background-color: #f1f0f0;
+			}
+			.table2 table td.txt {
+				text-align: left;
+			}
+			.table2 table .col1 {
+				width: 6.5497%;
+			}
+			.table2 table .col2 {
+				width: 54.7368%;
+			}
+			.table2 table .col3 {
+				width: 14.035%;
+			}
+			.table2 table .col4 {
+				width: 13.0994%;
+			}
+
+			.paging {
+				position: relative;
+				text-align: center;
+				padding: 32px 0 0 0;
+				z-index: 10;
+			}
+			.paging * {
+				vertical-align: middle;
+				font-weight: bold;
+			}
+			.paging > a {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.paging .prev,
+			.paging .next {
+				position: relative;
+				width: 32px;
+				height: 32px;
+				margin-left: 5px;
+				background: url(images/410/prev.png) center no-repeat;
+				border: 1px solid #000;
+				z-index: 5;
+			}
+			.paging strong {
+				display: inline-block;
+				vertical-align: middle;
+				color: #000;
+				font-family: "notoSansKR", dotum, "돋움";
+				padding: 0 10px;
+				font-weight: bold;
+			}
+			.paging .prev.most {
+				margin-left: 0;
+				background: url(images/410/ex_prev.png) center no-repeat;
+			}
+			.paging .next {
+				background: url(images/410/next.png) center no-repeat;
+			}
+			.paging .next.most {
+				background: url(images/410/ex_next.png) center no-repeat;
+			}
+			.paging span {
+				display: inline-block;
+				line-height: 20px;
+			}
+			.paging span a {
+				display: inline-block;
+				vertical-align: middle;
+				font-family: "notoSansKR", dotum, "돋움";
+				padding: 0 10px;
+				color: #000;
+				font-size: 14px;
+			}
+
+			.paging2 {
+				position: relative;
+				text-align: center;
+				padding: 35px 0;
+				z-index: 10;
+			}
+			.paging2 * {
+				vertical-align: middle;
+				font-weight: bold;
+			}
+			.paging2 > a {
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.paging2 .prev,
+			.paging2 .next {
+				position: relative;
+				width: 32px;
+				height: 32px;
+				margin-left: 5px;
+				background: url(images/prev2.png) center no-repeat;
+				border: 1px solid #000;
+				z-index: 5;
+			}
+			.paging2 strong {
+				display: inline-block;
+				vertical-align: middle;
+				color: #000;
+				font-family: "notoSansKR", dotum, "돋움";
+				padding: 0 10px;
+				font-weight: bold;
+			}
+			.paging2 .prev.most {
+				margin-left: 0;
+				background: url(images/prev1.png) center no-repeat;
+			}
+			.paging2 .next {
+				background: url(images/next2.png) center no-repeat;
+			}
+			.paging2 .next.most {
+				background: url(images/next1.png) center no-repeat;
+			}
+			.paging2 span {
+				display: inline-block;
+				line-height: 20px;
+			}
+			.paging2 span a {
+				display: inline-block;
+				vertical-align: middle;
+				font-family: "notoSansKR", dotum, "돋움";
+				padding: 0 10px;
+				color: #000;
+				font-size: 14px;
+			}
+			/* 상단 애니메이션 */
+			.animation_wrap{position: relative;}
+			.ani1{
+				width: 3.28%;
+				position: absolute;
+				top: 15%;
+    			left: 16.3%;
+			    animation: show_hide 1s linear infinite alternate;
+			}
+     
+			.ani2{
+				width: 3.28%;
+				position: absolute;
+				top: 30%;
+    			left: 40%;
+			}
+			.ani3{
+				position: absolute;
+				width: 41.53%;
+				position: absolute;
+				top: 23.5%;
+				left: 72%;
+                transition: all 0.8s;
+                transition-delay: 0.8s;
+		        animation: scrolling 1.5s infinite;
+			}
+        @keyframes scrolling {
+            0% {transform: translateY(0)}
+            50% {transform: translateY(-12px)}
+            100% {transform: translateY(0)}
+        }
+			.ani4{
+				position: absolute;
+				width: 4.92%;
+				top: 51%;
+				right: 7%;
+				animation: show_hide 0.5s linear infinite alternate;
+			}
+        @keyframes show_hide{
+        from{opacity: 0;
+
+        } to {
+            opacity: 1;
+            
+        }
+        }
+	/*		@keyframes show_hide {
+					from{
+						opacity: 0;
+					}
+					to{
+						opacity: 1;
+					}
+					
+				}
+				@keyframes hide_show {
+					from{
+						opacity: 0;
+					}
+					to{
+						opacity: 1;
+					}
+				}
+				@keyframes upNdown {
+					from{
+						top:10%;
+					}
+					to{
+						top:12%;
+					}
+				}*/
+			/* 테블릿 및 모바일 */
+			@media all and (max-width: 640px) {
+				html {
+					font-size: 14px;
+				}
+				.is_pc {
+					display: none;
+				}
+				.is_mobile {
+					display: block;
+				}
+				.event_wrap {
+					max-width: 100%;
+				}
+				.sns a {
+					width: 16%;
+					top: 9%;
+				}
+				.sns a.sns1 {
+					left: 11%;
+				}
+				.sns a.sns2 {
+					left: 31%;
+				}
+				.sns a.sns3 {
+					left: 55%;
+				}
+				.sns a.sns4 {
+					left: 75%;
+				}
+				.vote-wrap button.c2 {
+					left: 53.5%;
+				}
+                .vote-wrap button {
+                    position: absolute;
+                    left: 22%;
+                    top: 19%;
+                    width: 55%;
+                    height: 81%;
+                }
+				.video .pop {
+					width: 42.5%;
+					right: 16%;
+					top: -46%;
+				}
+				.table_wrap{
+					position: relative;
+				}
+				.table {
+					padding: 0 5.9% ;
+					background: #edf3f8;
+					/* padding: 0 5.9% 345px 5.9%; */
+				}
+				.table::after{
+					display: block;
+					content: "";
+					clear: both;
+				}
+				.table table th {
+					padding: 7px 0;
+					font-size: 12px;
+				}
+				.table table td {
+					padding: 7px;
+					font-size: 12px;
+				}
+				.table .input_area {
+					margin-bottom: 10px;
+				}
+				.table .input_area label {
+					margin-right: 113px;
+				}
+				.table .input_area input[type="text"] {
+					padding: 6px 0 7px 0;
+					font-size: 14px;
+				}
+				.table .input_area .submit {
+					width: 98px;
+					height: 100%;
+				}
+				.table .input_area .submit {
+					top: 0;
+				}
+
+				
+				.table_wrap2{
+					position: relative;
+				}
+				.table2 {
+					/* padding: 0 5.9% ; */
+					background: #bbdeff;
+				}
+				.table2 table th {
+					padding: 7px 0;
+					font-size: 12px;
+				}
+				.table2 table td {
+					padding: 7px;
+					font-size: 12px;
+				}
+				.table2 .input_area {
+					margin-bottom: 10px;
+				}
+				.table2 .input_area label {
+					margin-right: 113px;
+				}
+				.table2 .input_area input[type="text"] {
+					padding: 6px 0 7px 0;
+					font-size: 14px;
+				}
+				.table2 .input_area .submit2 {
+					width: 98px;
+					height: 100%;
+				}
+				.table2 .input_area .submit2 {
+					top: 0;
+				}
+				.paging {
+					padding: 30px 0;
+				}
+				.paging .num > strong,
+				.paging span a {
+					padding: 0 4px;
+					font-size: 12px;
+				}
+				.paging .prev,
+				.paging .next {
+					width: 22px;
+					height: 22px;
+				}
+				.win{
+					top: 43.2%;
+				}
+				.fail{
+					top: 43.19%;
+				}
+				/* .popup > div {
+					top: 49%;					
+					transform: rotateX(0);
+					left: 0;
+				}
+				.popup > div img {
+					width: 100%;
+				} */
+                .ani1 {width: 63%; top: 14%; left: 16.5%}
+			}
+		</style>
+    <!--script-->
+     <script src="./js/jquery-3.3.1.min.js"></script>
+    
+</head>
+
+<body>
+    <!--event_wrap-->
+    <div class="event_wrap">
+        <!--animation_wrap-->
+        <div class="animation_wrap">
+            <img src="./images/img01.jpg" alt="" class="is_pc">
+            <img src="./images/m_img01.jpg" alt="" class="is_mobile">
+            
+            <img src="images/ani1.png" alt="" class="ani1" style="width: 66%; height: auto">
+            <img src="images/ani2.png" alt="" class="ani3" style="width: 11%; height: auto">
+            <img src="images/ani_4.png" alt="" class="ani4 is_pc">
+             <img src="images/ani_1.png" alt="" class="ani1 is_mobile">
+            <img src="images/ani_3.png" alt="" class="ani3 is_mobile">
+            <img src="images/ani_4.png" alt="" class="ani4 is_mobile">
+        </div>
+        <!--animation_wrap-->
+  
+ 
+        <div>
+            <img src="./images/img02.jpg" alt="" class="is_pc">
+            <img src="./images/m_img02.jpg" alt="" class="is_mobile">
+        </div>
+        <div class="sns">
+            <img src="./images/sns.png" alt="" class="is_pc">
+            <img src="./images/m_sns.jpg" alt="" class="is_mobile">
+            <a href="#" class="sns1"></a>
+            <a href="#" class="sns2"></a>
+            <a href="#" class="sns3"></a>
+            <a href="#" class="sns4"></a>
+        </div>
+        <!--table2-->
+        <div class="table_wrap2">
+				<div class="table2">
+					<p class="input_area">
+						<label><input type="text" placeholder="www.woongjin.co.kr" /></label>
+						<input type="image" class="submit2 is_pc" id="submit2" src="./images/btn.png" alt="입력하기" />
+						<input type="image" class="submit2 is_mobile" id="submit2" src="./images/m_btn.png" alt="입력하기" />
+					</p>
+					<table>
+						<caption>
+							스크랩주소
+						</caption>
+						<colgroup>
+							<col class="col1" />
+							<col class="col2" />
+							<col class="col3" />
+							<col class="col4" />
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">
+									<div class="th_wrap">NO</div>
+								</th>
+								<th scope="col">
+									<div class="th_wrap">TEXT</div>
+								</th>
+								<th scope="col">
+									<div class="th_wrap">ID</div>
+								</th>
+								<th scope="col">
+									<div class="th_wrap">DATE</div>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="td_wrap">1</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">2</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">3</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">4</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">5</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">5</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">7</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">8</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">9</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<div class="td_wrap">10</div>
+								</td>
+								<td class="txt">
+									<div class="td_wrap"></div>
+								</td>
+								<td>
+									<div class="td_wrap">MADE WEB</div>
+								</td>
+								<td>
+									<div class="td_wrap">2015-10-15</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="paging2">
+						<a class="prev most" href="#"><span></span></a>
+						<a class="prev" href="#"><span></span></a>
+						<span class="num">
+							<strong>1</strong>
+							<a class="num" href="#">2</a>
+							<a class="num" href="#">3</a>
+							<a class="num" href="#">4</a>
+							<a class="num" href="#">5</a>
+						</span>
+						<a class="next" href="#"><span></span></a>
+						<a class="next most" href="#"><span></span></a>
+					</div>
+				</div>
+			</div>
+	
+    </div>
+
+</body>
+
+
+
+
+</html
+    
+   
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
